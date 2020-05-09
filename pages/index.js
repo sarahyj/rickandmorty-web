@@ -13,11 +13,25 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345
+    maxWidth: 345,
+    minHeight: 528
   },
   media: {
     height: 140
-  }
+  },
+  cardWrapper: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: 100
+  },
+  cardStyle: {
+    minWidth: 345,
+    marginRight: 25,
+    marginBottom: 25
+  },
+  title: { color: 'blue' },
+  info: { fontSize: 20 }
 });
 
 function Home() {
@@ -26,7 +40,7 @@ function Home() {
   const characters = _get(data, 'characters.results', []);
 
   return (
-    <>
+    <div className={classes.cardWrapper}>
       {characters.map(character => {
         console.log('***fjdlksjfkl', character);
         const name = _get(character, 'name', 'John doe');
@@ -40,7 +54,7 @@ function Home() {
         console.log('any text*****', name);
         console.log('hereeeee', image);
         return (
-          <div key={character.id}>
+          <div key={character.id} className={classes.cardStyle}>
             <Card className={classes.root}>
               <CardActionArea>
                 <CardMedia
@@ -50,22 +64,33 @@ function Home() {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    Id: {id}
+                    <span className={classes.title}>Id: </span>
+                    <span className={classes.info}>{id}</span>
                   </Typography>
+
                   <Typography gutterBottom variant="h5" component="h2">
-                    Name: {name}
+                    <span className={classes.title}>Name: </span>{' '}
+                    <span className={classes.info}>{name}</span>
                   </Typography>
+
                   <Typography gutterBottom variant="h5" component="h2">
-                    Gender: {gender}
+                    <span className={classes.title}>Gender: </span>{' '}
+                    <span className={classes.info}>{gender}</span>
                   </Typography>
+
                   <Typography gutterBottom variant="h5" component="h2">
-                    Location Name: {locationName}
+                    <span className={classes.title}>Location Name: </span>
+                    <span className={classes.info}>{locationName}</span>
                   </Typography>
+
                   <Typography gutterBottom variant="h5" component="h2">
-                    Status: {status}
+                    <span className={classes.title}>Status: </span>
+                    <span className={classes.info}>{status}</span>
                   </Typography>
+
                   <Typography gutterBottom variant="h5" component="h2">
-                    Species: {species}
+                    <span className={classes.title}>Species: </span>
+                    <span className={classes.info}>{species}</span>
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -81,7 +106,7 @@ function Home() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
 
