@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     minHeight: 528
   },
   media: {
-    height: 140
+    height: 280
   },
   cardWrapper: {
     display: 'flex',
@@ -42,7 +42,6 @@ function Home() {
   return (
     <div className={classes.cardWrapper}>
       {characters.map(character => {
-        console.log('***fjdlksjfkl', character);
         const name = _get(character, 'name', 'John doe');
         const gender = _get(character, 'gender', 'N/A');
         const locationName = _get(character, 'location.name', 'N/A');
@@ -51,8 +50,6 @@ function Home() {
         const id = character.id;
         const species = character.species;
 
-        console.log('any text*****', name);
-        console.log('hereeeee', image);
         return (
           <div key={character.id} className={classes.cardStyle}>
             <Card className={classes.root}>
